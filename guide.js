@@ -79,7 +79,22 @@ const story = {short:'یک سفارش، از ابتدا تا تحویل',icon:'s
   ['تا بسته‌بندی؛ پایان تولید با محصول سالم','قطعات تأییدشده چاپ می‌شوند، به خشک‌کن و سپس کوره سکوریت می‌روند و پس از خنک‌شدن، بازرسی نهایی و بسته‌بندی انجام می‌شود. در این مثال، ۲۰۰ شیشه سالم تا موعد مقرر آماده تحویل می‌شود.'],
   ['بعد از تحویل؛ یادگیری برای سفارش بعد','مصرف جام، پرتی برش، پنج قطعه معیوب، زمان تولید جایگزین و انتظار قبل از چاپ بررسی می‌شود. برای علت عیب و تأخیر، مسئول و اقدام مشخص تعیین می‌شود تا در سفارش بعدی بتوان دید این مشکلات کمتر شده‌اند یا نه.']
 ]};
-const all = [...lessons, story];
+const manager = {short:'راهنمای مدیر کل',icon:'action',title:'چه بپرسیم و چه اطلاعاتی بخواهیم؟',people:[
+  {title:'از مدیر برنامه‌ریزی: آیا به تعهداتمان می‌رسیم؟',questions:['کدام سفارش‌ها باید در روزهای آینده تحویل شوند و کدام در خطر تأخیر هستند؟','مواد، نقشه تأییدشده و زمان دستگاه‌های لازم آماده است؟','اگر سفارش فوری جدیدی بگیریم، تحویل کدام سفارش قبلی تغییر می‌کند؟'],example:'به‌جای «سفارش مشتری آماده می‌شود؟» بپرسیم: «از ۲۰۰ شیشه، چند عدد بسته‌بندی شده، باقی کجاست و چه چیزی ممکن است تحویل پنجشنبه را عقب بیندازد؟»'},
+  {title:'از مدیر کارخانه: چه چیزی مانع پیشرفت کار است؟',questions:['امروز چه مقدار محصول سالم تولید کردیم و نسبت به برنامه چقدر عقب یا جلو هستیم؟','کار قبل از کدام ایستگاه جمع شده و علت چیست؟','مهم‌ترین مانعی که برای رفع آن به تصمیم من نیاز دارید چیست؟'],example:'اگر شیشه‌ها قبل از کوره منتظرند، باید معلوم شود علت، آماده‌نبودن بار مناسب کوره است، توقف دستگاه است یا موضوع دیگری؛ هرکدام تصمیم متفاوتی می‌خواهد.'},
+  {title:'از مسئول کیفیت: کجا محصول از دست می‌دهیم؟',questions:['بیشترین عیب چیست و در کدام مرحله کشف می‌شود؟','علت ایجاد آن مشخص شده یا هنوز در حال بررسی است؟','قطعات معیوب جدا شده‌اند و اقدام انجام‌شده چقدر تکرار عیب را کم کرده است؟'],example:'اگر لب‌پریدگی اطراف سوراخ تکرار می‌شود، فقط تعداد شیشه‌های معیوب را نخواهیم؛ بپرسیم چه بررسی‌ای انجام شده و نتیجه تولید پس از اصلاح چه بوده است.'},
+  {title:'از مسئول انبار و خرید: چه کمبودی ممکن است تولید را متوقف کند؟',questions:['برای سفارش‌های نزدیک، جام با ضخامت مناسب و رنگ مورد نیاز کافی داریم؟','چه مقدار از موجودی قابل‌استفاده است و چه مقدار منتظر تأیید یا متعلق به سفارش‌های دیگر است؟','مواد کسری چه زمانی می‌رسند و اگر نرسند چه برنامه‌ای داریم؟'],example:'«شیشه در انبار داریم» جواب کافی نیست؛ ممکن است موجودی ۴ میلی‌متری باشد، اما سفارش به شیشه ۶ میلی‌متری نیاز داشته باشد.'},
+  {title:'از مسئول تعمیرات: کدام توقف‌ها دوباره تکرار می‌شوند؟',questions:['کدام دستگاه بیشترین زمان توقف را داشته و علت آن چه بوده است؟','چه کاری برای جلوگیری از تکرار انجام می‌دهیم؟','تعمیر یا رسیدگی برنامه‌ریزی‌شده چه اثری روی تولید و موعد سفارش‌ها دارد؟'],example:'اگر دستگاه سوراخ‌کاری چند بار متوقف شده، باید بدانیم مشکل موقتاً رفع شده یا علت اصلی برطرف شده است.'}
+],software:[
+  ['وضعیت سفارش را از ابتدا تا تحویل نشان دهد','برای هر سفارش معلوم باشد چه تعداد لازم است، چه مقدار سالم تولید شده، باقی در کدام مرحله است و آیا تحویل به‌موقع در خطر است. مبنای اعلام خطر هم روشن باشد؛ مثلاً عقب‌ماندن از برنامه یا کمبود مواد.'],
+  ['مسیر و سابقه شیشه‌ها را حفظ کند','بتوان ارتباط سفارش، بچ تولید، جام مصرف‌شده، مراحل انجام‌شده و نتایج بازرسی را دنبال کرد؛ حتی وقتی قطعات چند سفارش از یک جام بریده شده‌اند.'],
+  ['خروجی سالم، معیوب و قابل‌اصلاح را جدا نشان دهد','تعداد «ساخته‌شده» با تعداد «آماده تحویل» اشتباه نشود. وضعیت قطعات ردشده روشن باشد و تحویل آن‌ها به مرحله بعد بدون تعیین تکلیف و تأیید مجاز انجام نشود.'],
+  ['زمان کار و علت توقف را قابل بررسی کند','مشخص باشد افراد و دستگاه‌ها چه زمانی روی چه کاری فعالیت کرده‌اند و چه مدت صرف تنظیم، انتظار یا توقف شده است. مقایسه عملکرد هم با درنظرگرفتن تفاوت سفارش‌ها انجام شود.'],
+  ['مصرف و پرتی را با علت نشان دهد','مصرف جام و رنگ، باقی‌مانده قابل‌استفاده، پرتی برش و قطعات خراب‌شده از هم قابل تشخیص باشند. وقتی چند سفارش از یک جام استفاده می‌کنند، روش تقسیم مصرف هم مشخص باشد.'],
+  ['عددهای قابل‌اعتماد و قابل پیگیری ارائه دهد','معلوم باشد اطلاعات مربوط به چه زمانی است و چه کسی آن را ثبت کرده است. اگر عددی اصلاح شده، سابقه تغییر و دلیل آن باقی بماند. اطلاعات ثبت‌نشده هم نباید به شکل «صفر» نمایش داده شود و برداشت اشتباه ایجاد کند.'],
+  ['ثبت اطلاعات را برای کارکنان ساده کند','ثبت کار نباید آن‌قدر پیچیده باشد که افراد آن را عقب بیندازند یا حدسی وارد کنند. هر فرد باید به امکانات و اطلاعات مورد نیاز نقش خودش دسترسی داشته باشد.']
+]};
+const all = [...lessons, story, manager];
 const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 const mobileSection = document.getElementById('mobile-section');
 mobileSection.innerHTML = all.map((item,i)=>`<option value="${i+1}">${fa(i+1)}. ${item.short}</option>`).join('');
@@ -90,28 +105,44 @@ const lesson = document.getElementById('lesson');
 let current = 0;
 function markup(index, printing = false) {
   const item = all[index];
-  const head = `<div class="lesson-head"><span class="lesson-icon">${svg(item.icon)}</span><div><div class="lesson-kicker">${index < 8 ? `موضوع ${fa(index+1)} از ۸` : 'مثال یکپارچه · سفارش فرضی'}</div><h2 ${printing ? '' : 'id="lesson-title"'}>${item.title}</h2></div></div>`;
+  const head = `<div class="lesson-head"><span class="lesson-icon">${svg(item.icon)}</span><div><div class="lesson-kicker">${index < 8 ? `موضوع ${fa(index+1)} از ۸` : index===8 ? 'مثال یکپارچه · سفارش فرضی' : 'پس از آموزش · نگاه مدیر کل'}</div><h2 ${printing ? '' : 'id="lesson-title"'}>${item.title}</h2></div></div>`;
+  if(index===9) return head + managerMarkup(printing);
   if (index < 8) return head + item.paragraphs.map(p=>`<p>${p}</p>`).join('') + `<div class="key-question"><span>سؤالی که باید بپرسیم</span>${item.question}</div><div class="example"><div class="example-label">${svg('bulb')}یک مثال از کارخانه شیشه</div><p>${item.example}</p></div>`;
   return head + '<p>از مشخص‌شدن سفارش تا تحویل و بررسی نتیجه؛ این مثال نشان می‌دهد هشت موضوع قبلی چطور به هم متصل می‌شوند.</p><div class="case-summary"><span>۲۰۰ شیشه سالم</span><span>ضخامت ۶ میلی‌متر</span><span>تحویل: پایان هفته</span></div><p class="case-hint">برای دیدن جزئیات، هر مرحله را باز کنید.</p>' + item.steps.map(([title,body],i)=>`<details class="case-step" ${printing || i===0 ? 'open' : ''}><summary>${fa(i+1)}. ${title}</summary><p>${body}</p></details>`).join('') + '<div class="key-question"><span>نکته پایانی</span>تحویل به‌موقع مهم است؛ شناخت هزینه‌ها، مشکلات و علت آن‌ها هم برای بهترشدن سفارش بعدی لازم است.</div>';
 }
+function managerMarkup(printing) {
+  return '<p>مدیر کل لازم نیست همه جزئیات را خودش کنترل کند؛ باید بداند از چه کسی، چه سؤالی بپرسد و چه جوابی بخواهد. وظیفه او فهم وضعیت، پیگیری موانع مهم و بررسی نتیجه تصمیم‌هاست.</p><p>جواب‌هایی مثل «تولید خوب است» یا «داریم پیگیری می‌کنیم» کافی نیست. پاسخ مفید باید وضعیت، مشکل، مسئول پیگیری و زمان مشخص‌شدن نتیجه را روشن کند.</p>' +
+    '<div class="manager-tabs" role="group" aria-label="انتخاب موضوع راهنمای مدیر کل"><button type="button" data-manager-panel="people" aria-pressed="true" aria-controls="manager-people">از افراد چه بپرسیم؟</button><button type="button" data-manager-panel="software" aria-pressed="false" aria-controls="manager-software">از نرم‌افزار چه بخواهیم؟</button></div>' +
+    '<section id="manager-people" class="manager-panel" aria-labelledby="people-heading"><h3 id="people-heading">از چه کسی، چه چیزی بپرسیم؟</h3>' + manager.people.map((person,i)=>`<details class="case-step" ${printing||i===0?'open':''}><summary>${person.title}</summary><ul class="manager-questions">${person.questions.map(q=>`<li>${q}</li>`).join('')}</ul><div class="example"><div class="example-label">${svg('bulb')}یک مثال ملموس</div><p>${person.example}</p></div></details>`).join('') + '</section>' +
+    `<section id="manager-software" class="manager-panel" aria-labelledby="software-heading" ${printing?'':'hidden'}><h3 id="software-heading">از نرم‌افزار تولید چه توقعی داشته باشیم؟</h3><p>نرم‌افزار باید کمک کند پاسخ سؤال‌ها را سریع، روشن و با امکان بررسی جزئیات پیدا کنیم.</p>` + manager.software.map(([title,body],i)=>`<details class="case-step" ${printing||i===0?'open':''}><summary>${fa(i+1)}. ${title}</summary><p>${body}</p></details>`).join('') + '</section>' +
+    '<div class="key-question"><span>یک قاعده برای مدیر کل</span>برای هر مشکل مهم، چهار چیز بخواهید: وضعیت روشن، علت بررسی‌شده، مسئول اقدام و زمان بررسی نتیجه.</div><p>نرم‌افزار می‌تواند اطلاعات را جمع و ارتباط آن‌ها را روشن کند؛ اما تعیین مسئول، تصمیم‌گیری و پیگیری نتیجه همچنان وظیفه مدیران است.</p>';
+}
+lesson.addEventListener('click',event=>{
+  const button=event.target.closest('[data-manager-panel]');
+  if(!button)return;
+  lesson.querySelectorAll('[data-manager-panel]').forEach(tab=>tab.setAttribute('aria-pressed',String(tab===button)));
+  lesson.querySelectorAll('.manager-panel').forEach(panel=>{panel.hidden=panel.id!==`manager-${button.dataset.managerPanel}`;});
+});
 function render(focus = false) {
-  const match = /^#section-([1-9])$/.exec(location.hash);
-  current = match ? Number(match[1])-1 : 0;
+  const match = /^#section-([1-9]\d*)$/.exec(location.hash);
+  const requested = match ? Number(match[1])-1 : 0;
+  current = requested < all.length ? requested : 0;
   mobileSection.value = String(current+1);
   lesson.innerHTML = markup(current);
-  document.getElementById('position').textContent = current===8 ? 'مثال کامل · از ابتدا تا تحویل' : `موضوع ${fa(current+1)} از ۸ · ${all[current].short}`;
-  document.getElementById('page-number').textContent = `${fa(current+1)} / ۹`;
-  document.getElementById('progress').style.width = `${(current+1)/9*100}%`;
+  document.getElementById('position').textContent = current===9 ? 'راهنمای مدیر کل · پرسش‌ها و انتظارات' : current===8 ? 'مثال کامل · از ابتدا تا تحویل' : `موضوع ${fa(current+1)} از ۸ · ${all[current].short}`;
+  document.getElementById('page-number').textContent = `${fa(current+1)} / ${fa(all.length)}`;
+  document.getElementById('progress').style.width = `${(current+1)/all.length*100}%`;
+  document.querySelector('.progress-track').setAttribute('aria-valuemax',all.length);
   document.querySelector('.progress-track').setAttribute('aria-valuenow',current+1);
   nav.querySelectorAll('a').forEach((a,i)=>{if(i===current)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
   document.getElementById('previous').disabled = current===0;
-  document.getElementById('next').disabled = current===8;
-  document.getElementById('next').textContent = current===7 ? 'مثال کامل ←' : current===8 ? 'پایان راهنما' : 'بخش بعدی ←';
+  document.getElementById('next').disabled = current===all.length-1;
+  document.getElementById('next').textContent = current===7 ? 'مثال کامل ←' : current===8 ? 'راهنمای مدیر کل ←' : current===all.length-1 ? 'پایان راهنما' : 'بخش بعدی ←';
   if(focus){lesson.focus({preventScroll:true});if(window.innerWidth<701)lesson.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
 }
 window.addEventListener('hashchange',()=>render(true));
 document.getElementById('previous').addEventListener('click',()=>{if(current>0)location.hash=`section-${current}`;});
-document.getElementById('next').addEventListener('click',()=>{if(current<8)location.hash=`section-${current+2}`;});
+document.getElementById('next').addEventListener('click',()=>{if(current<all.length-1)location.hash=`section-${current+2}`;});
 document.getElementById('production-route').innerHTML = ['جام اولیه','برش','پرداخت','شست‌وشو','تراش و پخ','سوراخ‌کاری','چاپ','خشک‌کن','کوره سکوریت','خنک‌شدن','بازرسی نهایی','بسته‌بندی'].map(s=>`<li>${s}</li>`).join('');
 document.getElementById('print').addEventListener('click',()=>window.print());
 window.addEventListener('beforeprint',()=>{
