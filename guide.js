@@ -144,10 +144,10 @@ window.addEventListener('hashchange',()=>render(true));
 document.getElementById('previous').addEventListener('click',()=>{if(current>0)location.hash=`section-${current}`;});
 document.getElementById('next').addEventListener('click',()=>{if(current<all.length-1)location.hash=`section-${current+2}`;});
 document.getElementById('production-route').innerHTML = ['جام اولیه','برش','پرداخت','شست‌وشو','تراش و پخ','سوراخ‌کاری','چاپ','خشک‌کن','کوره سکوریت','خنک‌شدن','بازرسی نهایی','بسته‌بندی'].map(s=>`<li>${s}</li>`).join('');
-document.getElementById('print').addEventListener('click',()=>window.print());
 window.addEventListener('beforeprint',()=>{
   lesson.innerHTML = markup(0,true);
   all.slice(1).forEach((_,i)=>{const article=document.createElement('article');article.className='print-only';article.innerHTML=markup(i+1,true);document.querySelector('.reading-area').append(article);});
 });
 window.addEventListener('afterprint',()=>{document.querySelectorAll('.print-only').forEach(el=>el.remove());render();});
+history.replaceState(null, '', `${location.pathname}${location.search}#section-1`);
 render();
